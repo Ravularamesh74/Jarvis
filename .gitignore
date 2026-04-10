@@ -1,1 +1,137 @@
-/.env
+
+# ===============================
+# 🔐 ENV / SECRETS
+# ===============================
+.env
+.env.*
+*.env
+config.local.yaml
+secrets.yaml
+
+# ===============================
+# 🐍 PYTHON
+# ===============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ===============================
+# 📦 DEPENDENCY / CACHE
+# ===============================
+pip-log.txt
+pip-delete-this-directory.txt
+.cache/
+*.log
+
+# ===============================
+# 🧠 MEMORY / DATABASES
+# ===============================
+data/memory.db
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+
+# Vector embeddings (VERY IMPORTANT)
+data/embeddings/
+*.faiss
+*.index
+
+# ===============================
+# 📊 LOGS
+# ===============================
+logs/
+data/logs/
+*.log
+
+# ===============================
+# 🎙️ AUDIO FILES
+# ===============================
+*.wav
+*.mp3
+*.flac
+*.ogg
+
+# ===============================
+# 👁️ VISION / MEDIA
+# ===============================
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.avi
+
+# ===============================
+# 🤖 MODEL FILES (LARGE)
+# ===============================
+models/
+*.pt
+*.pth
+*.onnx
+*.bin
+
+# ===============================
+# ⚙️ SYSTEM FILES
+# ===============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===============================
+# 🧪 TEST / COVERAGE
+# ===============================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ===============================
+# 🖥️ IDE / EDITOR
+# ===============================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ===============================
+# 🌐 WEB / FRONTEND (if React UI)
+# ===============================
+node_modules/
+dist/
+build/
+*.map
+
+# ===============================
+# 🐳 DOCKER (optional)
+# ===============================
+docker-compose.override.yml
+
+# ===============================
+# 🔥 TEMP FILES
+# ===============================
+tmp/
+temp/
+*.tmp
+
+# ===============================
+# 🧠 NOTEBOOKS
+# ===============================
+.ipynb_checkpoints/
+
+# ===============================
+# 🔐 SECURITY CRITICAL
+# ===============================
+# NEVER COMMIT API KEYS
+*.pem
+*.key
+*.crt

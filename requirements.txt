@@ -1,0 +1,90 @@
+# ===============================
+# 🧠 CORE AI / LLM
+# ===============================
+openai>=1.0.0
+tiktoken
+langchain
+langchain-community
+langchain-core
+
+# ===============================
+# 🧠 LOCAL LLM (Fallback via Ollama)
+# ===============================
+ollama
+
+# ===============================
+# 🎙️ VOICE SYSTEM
+# ===============================
+SpeechRecognition
+pyaudio
+pyttsx3
+webrtcvad            # voice activity detection
+sounddevice
+numpy
+
+# ===============================
+# 🧠 MEMORY + VECTOR DB
+# ===============================
+faiss-cpu
+chromadb
+sentence-transformers
+
+# ===============================
+# ⚙️ AUTOMATION / SYSTEM CONTROL
+# ===============================
+pyautogui
+psutil
+subprocess32; python_version < "3.8"
+
+# ===============================
+# 🌐 WEB + API TOOLS
+# ===============================
+requests
+httpx
+beautifulsoup4
+lxml
+
+# ===============================
+# 👁️ COMPUTER VISION
+# ===============================
+opencv-python
+ultralytics          # YOLOv8
+
+# ===============================
+# 🧩 DATA / STORAGE
+# ===============================
+pydantic
+sqlalchemy
+python-dotenv
+pyyaml
+
+# ===============================
+# 🔁 ASYNC / PERFORMANCE
+# ===============================
+aiohttp
+asyncio
+uvloop; sys_platform != "win32"
+
+# ===============================
+# 📊 LOGGING / MONITORING
+# ===============================
+loguru
+rich
+
+# ===============================
+# 🔐 SECURITY
+# ===============================
+cryptography
+
+# ===============================
+# 🧪 TESTING
+# ===============================
+pytest
+pytest-asyncio
+
+# ===============================
+# 🖥️ OPTIONAL UI (Desktop/Web)
+# ===============================
+fastapi
+uvicorn
+jinja2

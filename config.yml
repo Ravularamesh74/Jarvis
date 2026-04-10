@@ -1,0 +1,210 @@
+# ===============================
+# 🧠 CORE IDENTITY
+# ===============================
+assistant:
+  name: "Jarvis"
+  version: "2.0"
+  mode: "autonomous"          # manual | assistive | autonomous
+  wake_word: "hey jarvis"
+  language: "en-IN"
+  personality: "precise, analytical, confident"
+
+# ===============================
+# 🧠 LLM CONFIGURATION
+# ===============================
+llm:
+  primary:
+    provider: "openai"
+    model: "gpt-4.1"
+    temperature: 0.7
+    max_tokens: 2000
+    stream: true
+
+  fallback:
+    provider: "ollama"
+    model: "llama3"
+    base_url: "http://localhost:11434"
+    timeout: 10
+
+  routing:
+    strategy: "cost_aware"   # cost_aware | latency | hybrid
+    auto_fallback: true
+
+# ===============================
+# 🎙️ VOICE SYSTEM
+# ===============================
+voice:
+  enabled: true
+
+  input:
+    engine: "whisper"
+    model: "base"
+    language: "en"
+    silence_timeout: 1.2
+
+  output:
+    engine: "pyttsx3"        # or elevenlabs
+    voice: "male"
+    rate: 180
+    volume: 1.0
+
+  wake_word:
+    enabled: true
+    engine: "porcupine"
+    sensitivity: 0.7
+
+# ===============================
+# 🧠 MEMORY SYSTEM
+# ===============================
+memory:
+  short_term:
+    enabled: true
+    max_messages: 10
+
+  long_term:
+    enabled: true
+    type: "vector"
+
+  vector_store:
+    provider: "faiss"
+    path: "./data/embeddings/"
+    top_k: 5
+
+  persistence:
+    db: "sqlite"
+    path: "./data/memory.db"
+
+# ===============================
+# 🤖 AGENT SYSTEM
+# ===============================
+agents:
+  enabled: true
+
+  planner:
+    enabled: true
+    max_steps: 10
+
+  executor:
+    parallel: true
+    max_workers: 3
+
+  types:
+    - coding
+    - research
+    - automation
+    - planning
+
+# ===============================
+# 🔧 TOOLS CONFIG
+# ===============================
+tools:
+  system:
+    enabled: true
+    allow_critical: false   # prevents dangerous commands
+
+  web:
+    enabled: true
+    search_engine: "google"
+
+  file:
+    enabled: true
+    base_path: "./workspace/"
+
+  code:
+    enabled: true
+    sandbox: true
+
+  api:
+    enabled: true
+
+# ===============================
+# ⚙️ AUTOMATION ENGINE
+# ===============================
+automation:
+  scheduler:
+    enabled: true
+
+  workflows:
+    enabled: true
+    max_concurrent: 5
+
+# ===============================
+# 👁️ VISION SYSTEM
+# ===============================
+vision:
+  enabled: false
+
+  camera:
+    index: 0
+
+  detection:
+    model: "yolov8"
+    confidence: 0.5
+
+# ===============================
+# 🌐 INTEGRATIONS
+# ===============================
+integrations:
+  github:
+    enabled: true
+
+  email:
+    enabled: false
+
+  whatsapp:
+    enabled: false
+
+  calendar:
+    enabled: false
+
+# ===============================
+# 🖥️ UI CONFIG
+# ===============================
+ui:
+  mode: "cli"               # cli | desktop | web
+  theme: "dark"
+  animations: true
+
+# ===============================
+# 📊 LOGGING & MONITORING
+# ===============================
+logging:
+  level: "INFO"             # DEBUG | INFO | WARNING | ERROR
+  file: "./data/logs/jarvis.log"
+  rotate: true
+
+monitoring:
+  metrics: true
+  tracing: false
+
+# ===============================
+# 🔐 SECURITY
+# ===============================
+security:
+  auth_required: false
+  encryption: false
+
+  permissions:
+    system_control: true
+    file_access: true
+    internet_access: true
+
+# ===============================
+# 🚀 PERFORMANCE
+# ===============================
+performance:
+  async_mode: true
+  max_queue_size: 100
+  timeout: 30
+
+  caching:
+    enabled: true
+    ttl: 300
+
+# ===============================
+# 🧪 EXPERIMENTAL FEATURES
+# ===============================
+experimental:
+  self_learning: false
+  auto_prompt_optimization: true
+  multi_modal: false
