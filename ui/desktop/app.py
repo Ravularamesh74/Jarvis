@@ -69,7 +69,10 @@ def build_system():
         vector_store=vector_store,
     )
 
-    orchestrator = Orchestrator(memory=memory_manager)
+    from core.registry import CentralRegistry
+    registry = CentralRegistry(brain=None, memory=memory_manager, context=None)
+
+    orchestrator = Orchestrator(memory=memory_manager, registry=registry)
 
     return orchestrator
 
