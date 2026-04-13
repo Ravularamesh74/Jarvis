@@ -23,15 +23,20 @@ class AgentManager:
     - Support planner (multi-step tasks)
     """
 
-    def __init__(self, brain, memory=None, context=None):
+    def __init__(self, brain, memory=None, context=None, registry=None):
         self.brain = brain
         self.executor = TaskExecutor()
+        self.registry = registry
 
         # Initialize agents
         self.coding = CodingAgent(brain, memory, context)
         self.automation = AutomationAgent()
         self.research = ResearchAgent(brain, memory, context)
         self.planner = PlannerAgent(brain, self, memory, context)
+
+        # Inject registry into automation agent so it can use system tools, web tools etc
+        if hasattr(self.automation, 'registry') is False:
+            self.automation.registry = self.registry
 
     # =============================
     # 🚀 MAIN ROUTER

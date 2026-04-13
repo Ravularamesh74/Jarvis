@@ -28,17 +28,23 @@ class Orchestrator:
     Memory + Context update
     """
 
-    def __init__(self):
+    def __init__(self, memory=None, context=None, registry=None):
         # Core systems
         self.brain = Brain()
-        self.context = ContextManager()
-        self.memory = Memory()
+        self.context = context or ContextManager()
+        self.memory = memory or Memory()
+        self.registry = registry
+
+        # If registry was initialized without a brain, we attach it now
+        if self.registry and not self.registry.brain:
+            self.registry.brain = self.brain
 
         # Agent layer
         self.agent_manager = AgentManager(
             brain=self.brain,
             memory=self.memory,
-            context=self.context
+            context=self.context,
+            registry=self.registry
         )
 
         self.core_agent = CoreAgent(

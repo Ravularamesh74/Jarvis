@@ -26,7 +26,10 @@ class AutomationAgent:
         logger.info(f"[Automation] Task received: {task}")
 
         try:
-            if "open" in task:
+            if "run tool" in task:
+                return await self.handle_tool(task)
+
+            elif "open" in task:
                 return await self.handle_open(task)
 
             elif "search" in task:
@@ -46,6 +49,21 @@ class AutomationAgent:
         except Exception as e:
             logger.error(f"Automation error: {e}")
             return "Automation failed due to an error."
+
+    # =============================
+    # 🛠️ TOOL DISPATCH
+    # =============================
+    async def handle_tool(self, task: str) -> str:
+        if not hasattr(self, "registry") or not self.registry:
+            return "Tool registry not connected."
+        
+        # Super basic extraction: "run tool web <query>"
+        parts = task.replace("run tool", "").strip().split(" ", 1)
+        tool_name = parts[0]
+        input_data = {"query": parts[1] if len(parts) > 1 else ""}
+
+        result = self.registry.execute_tool(tool_name, input_data)
+        return str(result)
 
     # =============================
     # 🖥️ OPEN APPLICATION

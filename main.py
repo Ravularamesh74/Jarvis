@@ -10,6 +10,9 @@ from core.context_manager import ContextManager
 # Voice
 from voice.audio_manager import VoiceStream
 
+# Registry
+from core.registry import CentralRegistry
+
 # Memory
 from memory.memory_manager import MemoryManager
 
@@ -31,7 +34,8 @@ class JarvisRuntime:
         # Core components
         self.context = ContextManager()
         self.memory = MemoryManager()
-        self.orchestrator = Orchestrator(memory=self.memory, context=self.context)
+        self.registry = CentralRegistry(brain=None, memory=self.memory, context=self.context)
+        self.orchestrator = Orchestrator(memory=self.memory, context=self.context, registry=self.registry)
 
         # Voice stream (real-time)
         self.voice = VoiceStream()
